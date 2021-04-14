@@ -1,0 +1,23 @@
+
+
+.menu{
+    background-color:#E8E1C3;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color:#d1b35f;
+    font-weight: bold;
+}
+
+.menu li{
+    list-style: none;
+}
+
+
+.menuSup{
+    background-color: #ffffff;
+    color: #d1b35f;
+    font-size: 24px;
+    display:flex;
+    justify-content: space-evenly;
+}
