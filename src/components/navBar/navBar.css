@@ -2,9 +2,8 @@
 
 .menu{
     background-color:#E8E1C3;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    display:none;
+    flex-direction: column;
     color:#d1b35f;
     font-weight: bold;
 }
@@ -20,4 +19,29 @@
     font-size: 24px;
     display:flex;
     justify-content: space-evenly;
+}
+
+.nav{
+    display:block;
+    background-color:#d1b35f;
+}
+
+@media screen and (min-width: 768px) { /*de 784px para arriba cambia*/
+   .menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+   }
+
+   .nav{
+    display:none;
+    }
+
+}
+
+
+
+@media screen and (min-width: 1024px) { /*de 1024px para arriba cambia*/
+    
+  
 }

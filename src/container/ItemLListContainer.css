@@ -1,8 +1,11 @@
 
 
 .contenedor{
-    height:50vh;
-    display:flex;
+    margin: 0;
+    width: 100vw;
+    min-height: 450px;
+    height: 100vh;
+    display: flex;
     align-items: center;
     justify-content: center;
 }

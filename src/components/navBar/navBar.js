@@ -1,23 +1,27 @@
 import React from 'react';
-import CartWidget from '../cartWidget/cartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 import  './navBar.css';
-import Logo from '../logo/logo';
-
+import Logo from '../Logo/Logo';
+import IconoMenu from '../IconoMenu/IconoMenu';
 
 const navBar = ()=> {
     return (
-        <div>
+        <header>
              <div className='menuSup'> 
                 <Logo/>     
                 <h3> Mi Tienda</h3>
-                <CartWidget/>  
+                <CartWidget/> 
+             
             </div>  
+                <nav className="nav"> <IconoMenu/> </nav>
                 <ul className="menu">   
                     <li><a><p>Mujeres ▼</p></a></li>
                     <li><a><p>Hombres ▼</p></a></li>
                     <li><a><p>Niños ▼</p></a></li>
-                </ul>   
-        </div> 
+                </ul>
+               
+                  
+        </header> 
         
     )
 
