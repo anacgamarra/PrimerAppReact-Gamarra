@@ -1,5 +1,5 @@
-import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './container/ItemListContainer';
+import NavBar from './components/navBar/navBar';
+import ItemListContainer from './container/itemListContainer';
 
 
 

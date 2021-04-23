@@ -14,32 +14,36 @@ const ItemListContainer = (props) => {
             title: 'Remera Dama',
             description:'Remera Dama algodon Talle Unico',
             price:'$600', 
-            pictureUrl: 'http://i.imgur.com/2p9VXAn.jpg', //'../../public/assets/remeraMujer.jpg'
-            stockA:0
+            pictureUrl: '/assets/remeraMujer.jpg', //'../../public/assets/remeraMujer.jpg'
+            stockA:0,
+            altText:'imagen Remera Dama'
           },
           {
             id:'2',
             title: 'Remera Niño',
             description:'Remera Niño algodon Talle M',
             price:'$400', 
-            pictureUrl:'http://i.imgur.com/2p9VXAn.jpg',// '../../public/assets/remeraNinio.jpg'
-            stockA:5
+            pictureUrl:'/assets/remeraNinio.jpg',// '../../public/assets/remeraNinio.jpg'
+            stockA:5,
+            altText:'imagen Remera Ninio'
           },
           {
             id:'3',
             title: 'Remera Hombre',
             description:'Remera Hombre algodon Talle L',
             price:'$700', 
-            pictureUrl: 'http://i.imgur.com/2p9VXAn.jpg',//'public/assets/remeraHombre.jpg'
-            stockA:5
+            pictureUrl: '/assets/remeraHombre.jpg',//'public/assets/remeraHombre.jpg'
+            stockA:5,
+            altText:'imagen Remera Hombre'
           },
 
           { id:'4',
             title: 'Remera Hombre',
             description:'Remera Hombre algodon Talle L',
             price:'$700', 
-            pictureUrl: 'http://i.imgur.com/2p9VXAn.jpg',
-            stockA:1
+            pictureUrl: '/assets/remeraHombre.jpg',
+            stockA:1,
+            altText:'imagen Remera Hombre'
           }
 
         ]
@@ -62,7 +66,7 @@ const ItemListContainer = (props) => {
     
     return (
         <div className="contenedor">
-          {/* <h1>{props.text}</h1> */}
+           <h1>{props.text}</h1>
            {productos.length > 0 ?<ItemList productos={productos}/> : <h2>No se encontro resultados</h2> }
            {/* */}
         </div>

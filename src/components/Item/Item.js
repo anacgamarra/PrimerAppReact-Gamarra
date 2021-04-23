@@ -3,13 +3,13 @@ import ItemCountContainer from '../../container/ItemCountContainer/ItemCountCont
 import './Item.css'
 
 
- const Item = ({id,title,description,price,pictureUrl,stockA}) => {
+ const Item = ({id,title,description,price,pictureUrl,stockA,altText}) => {
    console.log('id',id)
    console.log('title',title)
     return(
     
             <div className="card">
-                        <img className='img'src={pictureUrl}></img>
+                        <img className='img'src={pictureUrl} alt={altText}></img>
                         <div className="info">
                             <h2>{title}</h2>
                             <p className="price"><strong>{price}</strong></p>

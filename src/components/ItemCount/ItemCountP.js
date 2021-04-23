@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const ItemCount = ({btnOnAdd,btnSumar,btnRestar,stockTotal,stockPedido}) =>{
+const ItemCountP = ({btnOnAdd,btnSumar,btnRestar,stockTotal,stockPedido}) =>{
     
 
 
@@ -21,4 +21,4 @@ const ItemCount = ({btnOnAdd,btnSumar,btnRestar,stockTotal,stockPedido}) =>{
 }
 
 
-export default ItemCount;
+export default ItemCountP;

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import ItemCountP from '../../components/ItemCount/ItemCount'
+import ItemCountP from '../../components/ItemCount/ItemCountP'
 
 const ItemCount = ({stock}) => {
   console.log(stock)

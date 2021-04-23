@@ -10,7 +10,7 @@ const ItemList = ({productos}) => {
         <div className="cardContainer">
               {productos.map((i)=>
               
-                  <Item  key={i.id} id={i.id} title={i.title} description={i.description} price={i.price} pictureUrl={i.pictureUrl} stockA={i.stockA}/>
+                  <Item  key={i.id} id={i.id} title={i.title} description={i.description} price={i.price} pictureUrl={i.pictureUrl} stockA={i.stockA} altText={i.altText}/>
               )}
         </div>
            
