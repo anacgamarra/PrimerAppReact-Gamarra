@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+## Mi primer App con React Proyecto CoderHouse 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hola! Soy Ana Clara Gamarra, estudiante de Coder House. 
+Este es mi primer proyecto de React App 
+
+
+Pasos a Seguir para correr la App 
 
 ## Available Scripts
 
