@@ -1,4 +1,6 @@
 import React from 'react';
+import '../Item/Item.css';
+
 
 
 
@@ -14,7 +16,7 @@ const ItemCountP = ({btnOnAdd,btnSumar,btnRestar,stockTotal,stockPedido}) =>{
             <p>{stockPedido}</p>
             <button  className="btn"  disabled={stockTotal < 0} onClick={btnSumar}>+</button>
            </div>
-           <button  className="btn btnCompra"  disabled={stockPedido===0 } onClick={btnOnAdd}>Comprar</button>
+             <button  className="btn btnCompra"  disabled={stockPedido===0 } onClick={btnOnAdd}>Comprar</button>
        </div>
 
    )

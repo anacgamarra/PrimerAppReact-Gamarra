@@ -1,10 +1,12 @@
 import React, {useState,useEffect} from 'react';
 import './ItemLListContainer.css';
 import ItemList from '../components/ItemList/ItemList'
+import { useParams } from 'react-router';
 
 
 const ItemListContainer = (props) => {
     const [ productos, setProductos ] = useState([])
+    const {id} =useParams();
 
   useEffect(() => {    /*Esto solo me lo hara la priemra vez que renderiza porque le pase []*/ 
     const task = new Promise((resolve,reject)=>{
@@ -16,7 +18,8 @@ const ItemListContainer = (props) => {
             price:'$600', 
             pictureUrl: '/assets/remeraMujer.jpg', //'../../public/assets/remeraMujer.jpg'
             stockA:0,
-            altText:'imagen Remera Dama'
+            altText:'imagen Remera Dama',
+            category:'M'
           },
           {
             id:'2',
@@ -25,7 +28,8 @@ const ItemListContainer = (props) => {
             price:'$400', 
             pictureUrl:'/assets/remeraNinio.jpg',// '../../public/assets/remeraNinio.jpg'
             stockA:5,
-            altText:'imagen Remera Ninio'
+            altText:'imagen Remera Ninio',
+            category:'N'
           },
           {
             id:'3',
@@ -34,7 +38,8 @@ const ItemListContainer = (props) => {
             price:'$700', 
             pictureUrl: '/assets/remeraHombre.jpg',//'public/assets/remeraHombre.jpg'
             stockA:5,
-            altText:'imagen Remera Hombre'
+            altText:'imagen Remera Hombre',
+            category:'H'
           },
 
           { id:'4',
@@ -43,7 +48,8 @@ const ItemListContainer = (props) => {
             price:'$700', 
             pictureUrl: '/assets/remeraHombre.jpg',
             stockA:1,
-            altText:'imagen Remera Hombre'
+            altText:'imagen Remera Hombre',
+            category:'H'
           }
 
         ]
@@ -53,7 +59,12 @@ const ItemListContainer = (props) => {
       })
   
        task.then((res)=>{
-            setProductos(res) /*aqui guaardo en mi estado local el resultado de mi fecth en este caso es un arreglo*/
+            if(id===undefined){
+              setProductos(res) /*aqui guaardo en mi estado local el resultado de mi fecth en este caso es un arreglo*/
+            }else{
+               const resFiltrado=res.filter(x => x.category ===`${id}`)
+               setProductos(resFiltrado)
+            }
        })
        .catch((err)=>{
             console.log("Hubo un error")
@@ -61,7 +72,7 @@ const ItemListContainer = (props) => {
         .finally(()=>{
             console.log("AL FIN TERMINE")
         })
-  },[])
+  },[id])  //renderizará cada vez que cambie el id
      console.log(productos)
     
     return (
