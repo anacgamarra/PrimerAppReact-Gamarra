@@ -4,13 +4,13 @@ import '../Item/Item.css';
 
 
 
-const ItemCountP = ({btnOnAdd,btnSumar,btnRestar,stockTotal,stockPedido}) =>{
+const ItemCountP = ({btnOnAdd,btnSumar,btnRestar,stockTotal,stockPedido,clas}) =>{
     
 
 
     return(
-       <div className="info">
-           <p   className = {stockTotal===0 ? "stk sinStk" : "stk"}>El stock actual es: <strong >{stockTotal}</strong></p>
+       <div className={ clas ==='' ? 'info': `info ${clas}`}>
+           <p   className = {stockTotal===0 ? "stk sinStk" : "stk"}>El stock actual es:<strong >{stockTotal}</strong></p>
            <div className="btns">
             <button  className="btn"  disabled={stockTotal < 0} onClick={btnRestar}>-</button>
             <p>{stockPedido}</p>

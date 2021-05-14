@@ -7,8 +7,13 @@
    
   
   }
+  .bod{
+    background-color:red;
+  }
 
   @media screen and (min-width: 768px) {
     .cardContainer{min-width: 600px;}
   
   }
+
+

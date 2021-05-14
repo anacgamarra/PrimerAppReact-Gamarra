@@ -1,8 +1,11 @@
-import React, {useState,useEffect} from 'react';
-import ItemDetail from '../../components/ItemDetail/ItemDetail'
+import React, {useState,useEffect,useContext} from 'react';
+import ItemDetail from '../../components/ItemDetail/ItemDetail';
+
 
 const ItemDetailContainer = (props) => {
     const [item,setItem] = useState({});
+
+  
    
     useEffect(() => {    /*Esto solo me lo hara la priemra vez que renderiza porque le pase []*/ 
         const task = new Promise((resolve,reject)=>{
@@ -40,7 +43,7 @@ const ItemDetailContainer = (props) => {
         <div className="contenedor">
            <h1>{props.text}</h1>
            
-           {item && item.id  ? <ItemDetail  detail={item}/> : <h2>No se encontro resultados</h2> }
+           {item && item.id  ? <ItemDetail sty={'correr'} detail={item}/> : <h2>No se encontro resultados</h2> }
         </div>
     )
 }

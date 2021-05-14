@@ -59,7 +59,7 @@ const ItemListContainer = (props) => {
       })
   
        task.then((res)=>{
-            if(id===undefined){
+            if(id===undefined){   //si id tiene un valor quiere decir que estoy eligiendo una categoria /category/:id sino quiere decir que estoy en '/'
               setProductos(res) /*aqui guaardo en mi estado local el resultado de mi fecth en este caso es un arreglo*/
             }else{
                const resFiltrado=res.filter(x => x.category ===`${id}`)

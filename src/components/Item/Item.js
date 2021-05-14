@@ -4,13 +4,13 @@ import './Item.css'
 import {Link} from 'react-router-dom';
 
 
- const Item = ({id,title,description,price,pictureUrl,stockA,altText}) => {
+ const Item = ({id,title,description,price,pictureUrl,stockA,altText,sty}) => {
   
    console.log('id',id)
    console.log('title',title)
     return(
     
-            <div className="card">
+            <div className={`Card ${sty}`}>
                    <Link to={`/item/${id}`} className={Link}> 
 
                         <img className='img'src={pictureUrl} alt={altText}></img>
@@ -21,7 +21,7 @@ import {Link} from 'react-router-dom';
                         </div>
                     </Link> 
    
-                        <ItemCountContainer stock={stockA}/>
+                        <ItemCountContainer clase={''} stock={stockA} item={{id,title,description,price,pictureUrl,stockA,altText,sty}}/>
                 
             </div> 
    
