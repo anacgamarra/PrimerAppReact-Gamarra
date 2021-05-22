@@ -20,7 +20,7 @@ function App() {
                             <ItemListContainer text={'Bienvenidos a mi tienda online!'}/>
                         </Route>
                         <Route path="/cart">
-                            <Cart text={'Finalizar Compra'}/>
+                            <Cart/>
                         </Route>
                         <Route path="/">
                             <ItemListContainer text={'Bienvenidos a mi tienda online!'}/>

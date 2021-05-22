@@ -2,84 +2,52 @@ import React, {useState,useEffect} from 'react';
 import './ItemLListContainer.css';
 import ItemList from '../components/ItemList/ItemList'
 import { useParams } from 'react-router';
-
+import {getFirestore} from '../firebase/index';
 
 const ItemListContainer = (props) => {
     const [ productos, setProductos ] = useState([])
+    const [loading,setLoading]=useState(true)
     const {id} =useParams();
-
-  useEffect(() => {    /*Esto solo me lo hara la priemra vez que renderiza porque le pase []*/ 
-    const task = new Promise((resolve,reject)=>{
-    const items = [
-          {
-            id:'1',
-            title: 'Remera Dama',
-            description:'Remera Dama algodon Talle Unico',
-            price:'$600', 
-            pictureUrl: '/assets/remeraMujer.jpg', //'../../public/assets/remeraMujer.jpg'
-            stockA:0,
-            altText:'imagen Remera Dama',
-            category:'M'
-          },
-          {
-            id:'2',
-            title: 'Remera Niño',
-            description:'Remera Niño algodon Talle M',
-            price:'$400', 
-            pictureUrl:'/assets/remeraNinio.jpg',// '../../public/assets/remeraNinio.jpg'
-            stockA:5,
-            altText:'imagen Remera Ninio',
-            category:'N'
-          },
-          {
-            id:'3',
-            title: 'Remera Hombre',
-            description:'Remera Hombre algodon Talle L',
-            price:'$700', 
-            pictureUrl: '/assets/remeraHombre.jpg',//'public/assets/remeraHombre.jpg'
-            stockA:5,
-            altText:'imagen Remera Hombre',
-            category:'H'
-          },
-
-          { id:'4',
-            title: 'Remera Hombre',
-            description:'Remera Hombre algodon Talle L',
-            price:'$700', 
-            pictureUrl: '/assets/remeraHombre.jpg',
-            stockA:1,
-            altText:'imagen Remera Hombre',
-            category:'H'
-          }
-
-        ]
-        setTimeout(()=>{
-          resolve(items)
-        },2000)
-      })
   
-       task.then((res)=>{
-            if(id===undefined){   //si id tiene un valor quiere decir que estoy eligiendo una categoria /category/:id sino quiere decir que estoy en '/'
-              setProductos(res) /*aqui guaardo en mi estado local el resultado de mi fecth en este caso es un arreglo*/
-            }else{
-               const resFiltrado=res.filter(x => x.category ===`${id}`)
-               setProductos(resFiltrado)
-            }
-       })
-       .catch((err)=>{
-            console.log("Hubo un error")
-        })
-        .finally(()=>{
-            console.log("AL FIN TERMINE")
-        })
-  },[id])  //renderizará cada vez que cambie el id
+
+  useEffect(()=>{
+     const db = getFirestore();   /*Inicializa el acceso a mi BD*/
+     const itemsColection =db.collection('items'); //configuro que voy a acceder a la colleccion items
+    itemsColection.get()
+    .then((querySnapshot)=>{  /*invoca el llamado a toda la colleccion con get   y accede a el resultado querySnapshot*/
+       if(querySnapshot.size===0){  /*con .size  ve si tiene algo*/
+         console.log('No hay Items')
+       }
+         const documentos=querySnapshot.docs.map(doc=>{
+            return { id:doc.id,     /*retorno un objeto que arme con el id y el doc.data() desestructura para ponerlo en el mismo objeto*/
+                    ...doc.data()
+                  }
+          });/*con querySnapshot.docs accede a los datos documentos de FireBase devuelve un array de docs,
+          luego recorro cada elemento del arreglo con map para acceder alos datos con .data() este map me devolvera otro arreglo con los datos
+      
+          ya preparados*/
+       console.log(id) 
+      if(id===undefined){   //si id tiene un valor quiere decir que estoy eligiendo una categoria /category/:id sino quiere decir que estoy en '/'   
+        setProductos(documentos);  /*y guarda todo en el estado local de productos*/
+      }else{
+        const resFiltrado=documentos.filter(x => x.categoryId ===`${id}`)
+        setProductos(resFiltrado)
+     }       
+    }).catch((error)=>{
+       console.log('Error al cargar Items',error);
+    }).finally(()=>{
+       setLoading(false);
+    })
+  },[id]);
+
+
      console.log(productos)
     
     return (
         <div className="contenedor">
            <h1>{props.text}</h1>
-           {productos.length > 0 ?<ItemList productos={productos}/> : <h2>No se encontro resultados</h2> }
-           {/* */}
+           { }
+           {loading?<h2>Cargando...</h2>:productos.length > 0 ?<ItemList productos={productos}/> : <h2>No se encontro resultados</h2>}
         </div>
     )
 }

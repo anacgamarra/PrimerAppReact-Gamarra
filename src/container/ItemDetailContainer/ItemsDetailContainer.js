@@ -1,41 +1,31 @@
 import React, {useState,useEffect,useContext} from 'react';
 import ItemDetail from '../../components/ItemDetail/ItemDetail';
+import { useParams } from 'react-router';
+import {getFirestore} from '../../firebase';
 
 
 const ItemDetailContainer = (props) => {
     const [item,setItem] = useState({});
-
-  
+    const {id} =useParams();
+   useEffect(()=>{
+    const db = getFirestore();   /*Inicializa el acceso a mi BD*/
+    const itemsColection =db.collection('items'); //configuro que voy a acceder a la colleccion items
+    console.log(id)
+    const item=itemsColection.doc(id)
+    item.get()
+   .then((doc)=>{ 
+      if(!doc.exists){  
+        console.log('No existe Item')
+      }
+    
+        setItem({id:doc.id,...doc.data()});     
+   }).catch((error)=>{
+      console.log('Error al cargar Items',error);
+   }).finally(()=>{
+      console.log('Termino de cargar Items')
+   })
+   },[]) /*Esto solo me lo hara la priemra vez que renderiza porque le pase []*/ 
    
-    useEffect(() => {    /*Esto solo me lo hara la priemra vez que renderiza porque le pase []*/ 
-        const task = new Promise((resolve,reject)=>{
-            const itemArray = 
-                {
-                    id:'2',
-                    title: 'Remera Niño algodon Talle M',
-                    description:'Remera Niño algodon Talle M, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper ipsum ipsum, in pretium eros tincidunt ac. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis faucibus nisi. Morbi in odio id odio porttitor venenatis. Maecenas eleifend, ipsum eget scelerisque varius',
-                    price:'$400', 
-                    pictureUrl:'/assets/remeraNinio.jpg',// '../../public/assets/remeraNinio.jpg'
-                    stockA:5,
-                    altTex:'Imagen Remera ninio',
-                    size:'M'
-                }
-                
-            setTimeout(()=>{
-                resolve(itemArray)
-            },2000)
-
-            })
-        task.then((res)=>{
-                setItem(res) /*aqui guaardo en mi estado local el resultado de mi fecth en este caso es un arreglo*/
-        })
-        .catch((err)=>{
-                console.log("Hubo un error")
-            })
-        .finally(()=>{
-                console.log("TERMINO")
-            })
-    },[])    
 
     console.log('Item:', item)
     

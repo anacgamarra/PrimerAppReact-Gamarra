@@ -8,3 +8,20 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
+
+.ItemCart{
+    display:flex;
+    
+}
+
+.ItemCart img{
+    width:100px;
+}
+
+.TotalFinal{
+    padding:10%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: x-large;
+}

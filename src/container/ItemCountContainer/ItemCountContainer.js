@@ -6,32 +6,23 @@ import {Link} from 'react-router-dom';
 
 const ItemCount = ({stock,clase,item}) => {
 
-  console.log(stock)
+  console.log(item)
     const itemA=item
     const [stockPedido, setStockPedido] =useState(1);
     const [stockTotal, setStockTotal] =  useState(stock);
-    const {cart, setCart,isInCart,addItem} = useContext(CartContext);  /*ver* si es necesario usarlo o no*/
+    const {cart, setCart,isInCart,addItem,removeItem,clearCart} = useContext(CartContext);  
     const [terminar,setTerminar] =useState(false)
 const  sumar = ()=> {
- 
-  if (stockTotal === 0){
-   
-  }else{
+  if (stockTotal !== 0){
       setStockPedido(stockPedido + 1)
       setStockTotal(stockTotal - 1)
-    
   }
 }
 
 const  restar = ()=> {
-  if (stockTotal < 0 || stockPedido === 0){
-     
-  }else{
-      setStockPedido(stockPedido - 1)
-      setStockTotal(stockTotal + 1)
-      if(stockTotal===0){
-         
-      }
+  if (!(stockTotal < 0 || stockPedido === 0)){
+    setStockPedido(stockPedido - 1)
+    setStockTotal(stockTotal + 1)
   }
 }
 

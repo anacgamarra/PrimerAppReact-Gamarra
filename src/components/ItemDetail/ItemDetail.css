@@ -34,7 +34,7 @@
  }
  .contain-detail{
      width:60%;
-     text-align: justify; 
+     text-align: center; 
     font-size: 21px;
     padding-top:10px;
  }
@@ -57,6 +57,7 @@
 
 .styleDetail{
     width:200px;
+    margin-left:12%;
 }
 
 .styleDetail .btnCompra{
