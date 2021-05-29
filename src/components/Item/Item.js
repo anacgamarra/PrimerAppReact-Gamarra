@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom';
   
    console.log('id',id)
    console.log('title',title)
+   console.log('altText',altText)
     return(
     
             <div className={`Card ${sty}`}>
@@ -22,7 +23,7 @@ import {Link} from 'react-router-dom';
                         </div>
                     </Link> 
    
-                        <ItemCountContainer clase={''} stock={stockA} item={{id,title,description,price,pictureUrl,stockA,altText,sty}}/>
+                        <ItemCountContainer clase={''} stock={stockA} item={{id,title,description,price,pictureUrl,stockA,altText,talle}}/>
                 
             </div> 
    

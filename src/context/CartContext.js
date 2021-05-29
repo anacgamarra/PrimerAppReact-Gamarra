@@ -1,16 +1,14 @@
 import React, {useState,useEffect} from 'react';
 
+
 export const CartContext= React.createContext([]);   //creo el contexto
 
 export const Cantidad = ({children}) => {
 
     const [cart, setCart] = useState([])
-    
-
 
     useEffect(()=>{
       console.log(cart)
-      var Total=SumarTotalFinal(0)
     },[cart])
 
     function isInCart(itemId){
@@ -68,14 +66,18 @@ function getQuantity(Items,cant){
 
 
   function clearCart(){
-     setCart(cart,[])
+     setCart([])
   }
 
 
-  function SumarTotalFinal(totFinal=0){
+  function SumarTotalFinal(){
+    let totFinal=0;
      cart.forEach((x)=>totFinal=totFinal+x.totLin);
      return totFinal;
     }
+
+
+    
 
     return (
       <CartContext.Provider value={{cart,setCart,isInCart,addItem,removeItem,clearCart,SumarTotalFinal}}>
