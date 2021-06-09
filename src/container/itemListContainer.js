@@ -11,24 +11,20 @@ const ItemListContainer = (props) => {
   
 
   useEffect(()=>{
-     const db = getFirestore();   /*Inicializa el acceso a mi BD*/
+     const db = getFirestore();  
      const itemsColection =db.collection('items'); //configuro que voy a acceder a la colleccion items
     itemsColection.get()
-    .then((querySnapshot)=>{  /*invoca el llamado a toda la colleccion con get   y accede a el resultado querySnapshot*/
-       if(querySnapshot.size===0){  /*con .size  ve si tiene algo*/
+    .then((querySnapshot)=>{  
+       if(querySnapshot.size===0){  
          console.log('No hay Items')
        }
          const documentos=querySnapshot.docs.map(doc=>{
-            return { id:doc.id,     /*retorno un objeto que arme con el id y el doc.data() desestructura para ponerlo en el mismo objeto*/
+            return { id:doc.id,    
                     ...doc.data()
                   }
-          });/*con querySnapshot.docs accede a los datos documentos de FireBase devuelve un array de docs,
-          luego recorro cada elemento del arreglo con map para acceder alos datos con .data() este map me devolvera otro arreglo con los datos
-      
-          ya preparados*/
-       console.log(id) 
-      if(id===undefined){   //si id tiene un valor quiere decir que estoy eligiendo una categoria /category/:id sino quiere decir que estoy en '/'   
-        setProductos(documentos);  /*y guarda todo en el estado local de productos*/
+          });
+      if(id===undefined){   
+        setProductos(documentos); 
       }else{
         const resFiltrado=documentos.filter(x => x.categoryId ===`${id}`)
         setProductos(resFiltrado)
@@ -40,9 +36,6 @@ const ItemListContainer = (props) => {
     })
   },[id]);
 
-
-     console.log(productos)
-    
     return (
         <div className="contenedor">
            <h1>{props.text}</h1>

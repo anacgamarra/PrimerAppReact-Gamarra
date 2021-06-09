@@ -32,3 +32,11 @@ label{
     font-weight: bold;
 
 }
+
+.oculta{
+    display:none;
+}
+
+.mostrar{
+    display:block;
+}

@@ -29,11 +29,8 @@ const  restar = ()=> {
 const onAdd = () => {
   let cantCompra = stockPedido
   if (cantCompra === 0 ){
-      console.log('Pedido = 0')
       alert('No selecciono ningun articulo')
   }else{
-    console.log('AddItem')
-     console.log(itemA) 
      addItem(itemA,cantCompra)
      setTerminar(!terminar); //cambia de estado para mostrar el boton terminar compra
   }

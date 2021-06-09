@@ -18,7 +18,6 @@ import {Link} from 'react-router-dom';
                         <div className="info">
                             <h2>{title}</h2>
                             <p className="price"><strong>${price}</strong></p>
-                            <p>{description}</p>
                             <p>Talle:{talle} </p>
                         </div>
                     </Link> 

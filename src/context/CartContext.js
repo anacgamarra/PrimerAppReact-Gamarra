@@ -13,8 +13,7 @@ export const Cantidad = ({children}) => {
 
     function isInCart(itemId){
       console.log('isInCart'+itemId)
-      const InCart= cart.find( x=> x.Items.id === itemId)   //finde devuelve el valor del primer elemento que cumple la condicion
-      // cart.map(x=>console.log('cart.id',x.Items.id))
+      const InCart= cart.find( x=> x.Items.id === itemId)   
       if (InCart!==undefined){
         return true;
       }
@@ -41,16 +40,10 @@ function getQuantity(Items,cant){
     
 /*agrego el producto al carrito y si ya esta en el carrito  actualiza la cantidad*/ 
     function addItem(Items,cant){
-      console.log(Items)
-      console.log(Items.id)
       if(isInCart(Items.id)){
-          console.log('isInCart(Items.id)',isInCart(Items.id))
           getQuantity(Items,cant)
       }else{
-        console.log('isInCart(Items.id)',isInCart(Items.id))
-        console.log(Items.price)
         var precio=Items.price;
-        // console.log(precio.substring(1))
         var totLin=cant*precio;
         setCart([...cart,{Items,qt:cant,totLin:totLin}])
        }
